@@ -1,17 +1,13 @@
 /* Make body fill the viewport */
 body, html {
-  border: 10px solid #FFFFFF;
-  margin: 0;
-  height: 100vh;
-  box-sizing: border-box;
-  background-color: #000000;
+  border: 10px solid #FFFFFF; /* 5px thick solid border with dark gray color */
+  margin: 0; /* Remove default margin to avoid border being pushed inward */
+  height: 100vh; /* Ensure body fills viewport height */
+  box-sizing: border-box; /* Include border in element's total size */
+  background-color: #000000; /* Background color for body */
 }
 
-.cool-border {
-  border: 10px solid #FFFFFF;
-}
-
-/* Div covers entire body (Cleaned up syntax) */
+/* Div covers entire body */
 .diagonal-corners {
   position: fixed;
   top: 0;
@@ -19,20 +15,6 @@ body, html {
   width: 100vw;
   height: 100vh;
   background-color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* The Pentagon/Triangle Tesselation Background Pattern */
-  background-image: conic-gradient(from 0deg at 50% 50%, 
-      rgba(0,0,0,0.05) 0deg 72deg, 
-      rgba(0,0,0,0.1) 72deg 144deg, 
-      rgba(0,0,0,0.05) 144deg 216deg, 
-      rgba(0,0,0,0.1) 216deg 288deg, 
-      rgba(0,0,0,0.05) 288deg 360deg);
-  background-size: 200px 200px; 
-  
-  /* Diagonal top and bottom corners */
   clip-path: polygon(
     210px 0, 
     calc(100% - 210px) 0, 
@@ -40,6 +22,48 @@ body, html {
     100% 100%, 
     0 100%, 
     0 210px
+  );
+  /* This centers the pentagon inside the white area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+  /* ADD THIS: The Pentagon/Triangle Tesselation Pattern */
+  background-image: 
+    /* Subtle grey lines to simulate triangle edges */
+    conic-gradient(from 0deg at 50% 50%, 
+      rgba(0,0,0,0.05) 0deg 72deg, 
+      rgba(0,0,0,0.1) 72deg 144deg, 
+      rgba(0,0,0,0.05) 144deg 216deg, 
+      rgba(0,0,0,0.1) 216deg 288deg, 
+      rgba(0,0,0,0.05) 288deg 360deg);
+  
+  /* Adjust the size to determine how many pentagons appear in the background */
+  background-size: 200px 200px; 
+  
+  clip-path: polygon(
+    210px 0, 
+    calc(100% - 210px) 0, 
+    100% 210px, 
+    100% 100%, 
+    0 100%, 
+    0 210px
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  /* Clip-path to create flat diagonal top corners */
+  clip-path: polygon(
+    210px 0,       /* top-left diagonal start */
+    calc(100% - 210px) 0, /* top-right diagonal start */
+    100% 210px,    /* top-right diagonal end */
+    100% 100%,    /* bottom-right */
+    0 100%,       /* bottom-left */
+    0 210px      /* top-left diagonal end */
   );
 }
 
@@ -52,7 +76,7 @@ body, html {
 }
 
 .pentagon-container {
-  width: 750px;
+  width: 750px;  /* Made it a bit larger to fit the letters comfortably */
   height: 750px;
   position: relative;
 }
@@ -64,73 +88,32 @@ body, html {
   clip-path: polygon(50% 50%, 50% 0%, 97.5% 34.5%);
   transform-origin: 50% 50%;
   
+  /* Layout for the letter */
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 180px;   
+  align-items: flex-start; /* Keeps text toward the outer edge */
+  padding-top: 180px;   /* Adjust this to move letters in/out */
   padding-left: 210px;
   box-sizing: border-box;
 }
 
 .triangle span {
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', monospace; /* Tech/Neuro vibe */
   font-size: 6rem;
   font-weight: bold;
   color: #FFFFFF;
-  z-index: 10;
 }
 
-/* --- INNER TRIANGLES --- */
-.t1 { transform: rotate(0deg);   background: #111; z-index: 2; }
-.t2 { transform: rotate(72deg);  background: #222; z-index: 2; }
-.t3 { transform: rotate(144deg); background: #111; z-index: 2; }
-.t4 { transform: rotate(216deg); background: #222; z-index: 2; }
-.t5 { transform: rotate(288deg); background: #333; z-index: 2; }
+/* Rotations for Triangles */
+.t1 { transform: rotate(0deg);   background: #111; }
+.t2 { transform: rotate(72deg);  background: #222; }
+.t3 { transform: rotate(144deg); background: #111; }
+.t4 { transform: rotate(216deg); background: #222; }
+.t5 { transform: rotate(288deg); background: #333; }
 
-/* Counter-Rotations for Letters */
+/* Counter-Rotations for Letters (keeps them upright) */
 .t1 span { transform: rotate(0deg); }
 .t2 span { transform: rotate(-72deg); }
 .t3 span { transform: rotate(-144deg); }
 .t4 span { transform: rotate(-216deg); }
 .t5 span { transform: rotate(-288deg); }
-
-/* --- OUTER TESSELLATION LAYER --- */
-/* The translate shifts the pivot perfectly to the flat outer edge before rotating 180deg */
-.o1 { transform: rotate(0deg)   translate(47.5%, -65.5%) rotate(180deg); background: #1a1a1a; z-index: 1; }
-.o2 { transform: rotate(72deg)  translate(47.5%, -65.5%) rotate(180deg); background: #2a2a2a; z-index: 1; }
-.o3 { transform: rotate(144deg) translate(47.5%, -65.5%) rotate(180deg); background: #1a1a1a; z-index: 1; }
-.o4 { transform: rotate(216deg) translate(47.5%, -65.5%) rotate(180deg); background: #2a2a2a; z-index: 1; }
-.o5 { transform: rotate(288deg) translate(47.5%, -65.5%) rotate(180deg); background: #3a3a3a; z-index: 1; }
-
-/* Update your pentagon-container to stack them */
-.pentagon-container {
-  width: 750px;
-  height: 750px;
-  position: absolute; /* Changed from relative to absolute */
-  top: -375px; /* Pulls it up by half height to center it */
-  left: -375px; /* Pulls it left by half width to center it */
-}
-
-/* --- THE LAYER SCALING TRICK --- */
-
-/* Core Layer */
-.layer-1 {
-  transform: scale(1);
-  z-index: 3;
-}
-
-/* Middle Layer: Scaled up and rotated to interlock the gaps */
-.layer-2 {
-  transform: scale(2.618) rotate(36deg); 
-  z-index: 2;
-  opacity: 0.4; /* Faded slightly for depth */
-}
-
-/* Massive Outer Layer: Scaled up again and aligned with the core */
-.layer-3 {
-  transform: scale(6.854) rotate(0deg); 
-  z-index: 1;
-  opacity: 0.15; /* Faded more into the background */
-}
-
-/* (Keep all your existing .t1-.t5 and .o1-.o5 triangle CSS exactly as it was!) */
