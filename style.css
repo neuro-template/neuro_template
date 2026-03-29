@@ -7,6 +7,10 @@ body, html {
   background-color: #000000;
 }
 
+.cool-border {
+  border: 10px solid #FFFFFF;
+}
+
 /* Div covers entire body (Cleaned up syntax) */
 .diagonal-corners {
   position: fixed;
