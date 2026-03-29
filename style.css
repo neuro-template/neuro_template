@@ -1,6 +1,6 @@
 /* Make body fill the viewport */
 body, html {
-  border: 30px solid #FFFFFF; /* 5px thick solid border with dark gray color */
+  border: 10px solid #FFFFFF; /* 5px thick solid border with dark gray color */
   margin: 0; /* Remove default margin to avoid border being pushed inward */
   height: 100vh; /* Ensure body fills viewport height */
   box-sizing: border-box; /* Include border in element's total size */
