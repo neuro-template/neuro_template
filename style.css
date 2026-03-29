@@ -52,7 +52,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Keeps text toward the outer edge */
-  padding-top: 90px;   /* Adjust this to move letters in/out */
+  padding-top: 120px;   /* Adjust this to move letters in/out */
   padding-left: 45px;
   box-sizing: border-box;
 }
