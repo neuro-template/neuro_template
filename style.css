@@ -53,13 +53,13 @@ body, html {
   justify-content: center;
   align-items: flex-start; /* Keeps text toward the outer edge */
   padding-top: 180px;   /* Adjust this to move letters in/out */
-  padding-left: 210px;
+  padding-left: 240px;
   box-sizing: border-box;
 }
 
 .triangle span {
   font-family: 'Courier New', monospace; /* Tech/Neuro vibe */
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: bold;
   color: #FFFFFF;
 }
