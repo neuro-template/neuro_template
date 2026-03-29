@@ -53,7 +53,6 @@ body, html {
   justify-content: center;
   align-items: flex-start; /* Keeps text toward the outer edge */
   padding-top: 60px;       /* Adjust this to move letters in/out */
-  padding-left: 60px;
   box-sizing: border-box;
 }
 
@@ -72,8 +71,9 @@ body, html {
 .t5 { transform: rotate(288deg); background: #333; }
 
 /* Counter-Rotations for Letters (keeps them upright) */
-.t1 span { transform: rotate(0deg); }
-.t2 span { transform: rotate(-72deg); }
-.t3 span { transform: rotate(-144deg); }
-.t4 span { transform: rotate(-216deg
-.t5 span { transform: rotate(-288deg); }
+.t1 span { transform: rotate(0deg) translateX(60px); }
+.t2 span { transform: rotate(-72deg) translateY(60px; }
+.t3 span { transform: rotate(-144deg) translateX(-30px) translateY(-30px); }
+.t4 span { transform: rotate(-216deg) translateX(-30px) translateY(30px); }
+.t5 span { transform: rotate(-288deg) translateX(30px) translateY(30px) ; }
+
