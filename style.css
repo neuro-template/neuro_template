@@ -97,3 +97,36 @@ body, html {
 .o3 { transform: rotate(144deg) translate(47.5%, -65.5%) rotate(180deg); background: #1a1a1a; z-index: 1; }
 .o4 { transform: rotate(216deg) translate(47.5%, -65.5%) rotate(180deg); background: #2a2a2a; z-index: 1; }
 .o5 { transform: rotate(288deg) translate(47.5%, -65.5%) rotate(180deg); background: #3a3a3a; z-index: 1; }
+
+/* Update your pentagon-container to stack them */
+.pentagon-container {
+  width: 750px;
+  height: 750px;
+  position: absolute; /* Changed from relative to absolute */
+  top: -375px; /* Pulls it up by half height to center it */
+  left: -375px; /* Pulls it left by half width to center it */
+}
+
+/* --- THE LAYER SCALING TRICK --- */
+
+/* Core Layer */
+.layer-1 {
+  transform: scale(1);
+  z-index: 3;
+}
+
+/* Middle Layer: Scaled up and rotated to interlock the gaps */
+.layer-2 {
+  transform: scale(2.618) rotate(36deg); 
+  z-index: 2;
+  opacity: 0.4; /* Faded slightly for depth */
+}
+
+/* Massive Outer Layer: Scaled up again and aligned with the core */
+.layer-3 {
+  transform: scale(6.854) rotate(0deg); 
+  z-index: 1;
+  opacity: 0.15; /* Faded more into the background */
+}
+
+/* (Keep all your existing .t1-.t5 and .o1-.o5 triangle CSS exactly as it was!) */
