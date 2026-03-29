@@ -5,6 +5,7 @@ body, html {
   height: 100%;
   width: 100%;
   background-color: #000000; /* Background color for body */
+  border: 30px, #FFFFFF;
 }
 
 /* Div covers entire body */
@@ -18,11 +19,11 @@ body, html {
 
   /* Clip-path to create flat diagonal top corners */
   clip-path: polygon(
-    150px 0,       /* top-left diagonal start */
-    calc(100% - 150px) 0, /* top-right diagonal start */
-    100% 150px,    /* top-right diagonal end */
+    180px 0,       /* top-left diagonal start */
+    calc(100% - 180px) 0, /* top-right diagonal start */
+    100% 180px,    /* top-right diagonal end */
     100% 100%,    /* bottom-right */
     0 100%,       /* bottom-left */
-    0 150px        /* top-left diagonal end */
+    0 180px        /* top-left diagonal end */
   );
 }
