@@ -36,8 +36,8 @@ body, html {
 }
 
 .pentagon-container {
-  width: 500px;  /* Made it a bit larger to fit the letters comfortably */
-  height: 500px;
+  width: 750px;  /* Made it a bit larger to fit the letters comfortably */
+  height: 750px;
   position: relative;
 }
 
@@ -52,8 +52,8 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Keeps text toward the outer edge */
-  padding-top: 60px;   /* Adjust this to move letters in/out */
-  padding-left: 30px;
+  padding-top: 90px;   /* Adjust this to move letters in/out */
+  padding-left: 45px;
   box-sizing: border-box;
 }
 
