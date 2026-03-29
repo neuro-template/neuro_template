@@ -9,12 +9,40 @@ body, html {
 
 /* Div covers entire body */
 .diagonal-corners {
-  position: fixed; /* fixed to cover viewport */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #FFFFFF; /* Div background color */
+  /* Keep your white background as the base */
+  background-color: #FFFFFF; 
+  
+  /* ADD THIS: The Pentagon/Triangle Tesselation Pattern */
+  background-image: 
+    /* Subtle grey lines to simulate triangle edges */
+    conic-gradient(from 0deg at 50% 50%, 
+      rgba(0,0,0,0.05) 0deg 72deg, 
+      rgba(0,0,0,0.1) 72deg 144deg, 
+      rgba(0,0,0,0.05) 144deg 216deg, 
+      rgba(0,0,0,0.1) 216deg 288deg, 
+      rgba(0,0,0,0.05) 288deg 360deg);
+  
+  /* Adjust the size to determine how many pentagons appear in the background */
+  background-size: 200px 200px; 
+  
+  clip-path: polygon(
+    210px 0, 
+    calc(100% - 210px) 0, 
+    100% 210px, 
+    100% 100%, 
+    0 100%, 
+    0 210px
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
   /* Clip-path to create flat diagonal top corners */
   clip-path: polygon(
