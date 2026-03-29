@@ -27,29 +27,18 @@ body, html {
   );
 }
 
-.container {
-  position: relative;
+.pentagon {
   width: 200px;
   height: 200px;
+  background-color: #3498db;
   margin: 50px auto;
-  background-color: #eee;
-  border: 2px solid #333;
-  border-radius: 10px;
-}
-
-/* Each triangle */
-.triangle {
-  --size: 80px; /* size of each triangle */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-left: calc(var(--size) / 2) solid transparent;
-  border-right: calc(var(--size) / 2) solid transparent;
-  border-bottom: var(--size) solid #3498db;
-  transform-origin: 50% 100%; /* rotate around bottom center */
   
-  /* Rotate each triangle by 72 degrees times its index */
-  transform: translate(-50%, -100%) rotate(calc(var(--i) * 72deg));
+  /* Clip-path polygon for a regular pentagon */
+  clip-path: polygon(
+    50% 0%,      /* top center */
+    90% 38%,     /* top right */
+    73% 90%,     /* bottom right */
+    27% 90%,     /* bottom left */
+    10% 38%      /* top left */
+  );
 }
