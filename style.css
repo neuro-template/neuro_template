@@ -1,12 +1,10 @@
 /* Make body fill the viewport */
 body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  border: 30px solid #FFFFFF; /* 5px thick solid border with dark gray color */
+  margin: 0; /* Remove default margin to avoid border being pushed inward */
+  height: 100vh; /* Ensure body fills viewport height */
+  box-sizing: border-box; /* Include border in element's total size */
   background-color: #000000; /* Background color for body */
-  border: 30px solid: #FFFFFF;
-  box-sizing: border-box;
 }
 
 /* Div covers entire body */
