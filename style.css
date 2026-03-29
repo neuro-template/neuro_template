@@ -71,8 +71,8 @@ body, html {
 .t5 { transform: rotate(288deg); background: #333; }
 
 /* Counter-Rotations for Letters (keeps them upright) */
-.t1 span { transform: rotate(0deg); }
-.t2 span { transform: rotate(-72deg); }
-.t3 span { transform: rotate(-144deg); }
-.t4 span { transform: rotate(-216deg); }
-.t5 span { transform: rotate(-288deg); }
+.t1 span { transform: rotate(-36deg); }
+.t2 span { transform: rotate(-108deg); }
+.t3 span { transform: rotate(-180deg); }
+.t4 span { transform: rotate(-252deg); }
+.t5 span { transform: rotate(-324deg); }
