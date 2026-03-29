@@ -4,7 +4,7 @@ body, html {
   padding: 0;
   height: 100%;
   width: 100%;
-  background-color: #f0f0f0; /* Background color for body */
+  background-color: #000000; /* Background color for body */
 }
 
 /* Div covers entire body */
@@ -14,7 +14,7 @@ body, html {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #3498db; /* Div background color */
+  background-color: #FFFFFF; /* Div background color */
 
   /* Clip-path to create flat diagonal top corners */
   clip-path: polygon(
