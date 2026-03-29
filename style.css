@@ -6,6 +6,7 @@ body, html {
   width: 100%;
   background-color: #000000; /* Background color for body */
   border: 30px solid: #FFFFFF;
+  box-sizing: border-box;
 }
 
 /* Div covers entire body */
