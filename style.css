@@ -47,7 +47,7 @@ body, html {
   height: 100%;
   clip-path: polygon(50% 50%, 50% 0%, 97.5% 34.5%);
   transform-origin: 50% 50%;
-  padding: 5px;
+  padding: 10px;
   
   /* Layout for the letter */
   display: flex;
