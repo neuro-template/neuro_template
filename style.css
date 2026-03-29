@@ -18,11 +18,11 @@ body, html {
 
   /* Clip-path to create flat diagonal top corners */
   clip-path: polygon(
-    60px 0,       /* top-left diagonal start */
-    calc(100% - 20px) 0, /* top-right diagonal start */
-    100% 60px,    /* top-right diagonal end */
+    150px 0,       /* top-left diagonal start */
+    calc(100% - 150px) 0, /* top-right diagonal start */
+    100% 150px,    /* top-right diagonal end */
     100% 100%,    /* bottom-right */
     0 100%,       /* bottom-left */
-    0 60px        /* top-left diagonal end */
+    0 150px        /* top-left diagonal end */
   );
 }
