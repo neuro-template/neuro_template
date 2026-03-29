@@ -18,7 +18,6 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 10px solid #FFFFFF;
 
   /* The Pentagon/Triangle Tesselation Background Pattern */
   background-image: conic-gradient(from 0deg at 50% 50%, 
