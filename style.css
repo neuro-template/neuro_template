@@ -32,12 +32,12 @@ body, html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10; /* Ensures it sits above your white div */
+  z-index: 10;
 }
 
 .pentagon-container {
-  width: 400px;
-  height: 400px;
+  width: 500px;  /* Made it a bit larger to fit the letters comfortably */
+  height: 500px;
   position: relative;
 }
 
@@ -45,14 +45,34 @@ body, html {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* Coordinates calculated for a perfect 72-degree slice */
   clip-path: polygon(50% 50%, 50% 0%, 97.5% 34.5%);
   transform-origin: 50% 50%;
+  
+  /* Layout for the letter */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Keeps text toward the outer edge */
+  padding-top: 60px;       /* Adjust this to move letters in/out */
+  box-sizing: border-box;
 }
 
-/* Rotations to assemble the 5 pieces */
-.t1 { transform: rotate(0deg);   background-color: #111; }
-.t2 { transform: rotate(72deg);  background-color: #222; }
-.t3 { transform: rotate(144deg); background-color: #111; }
-.t4 { transform: rotate(216deg); background-color: #222; }
-.t5 { transform: rotate(288deg); background-color: #333; }
+.triangle span {
+  font-family: 'Courier New', monospace; /* Tech/Neuro vibe */
+  font-size: 3rem;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+/* Rotations for Triangles */
+.t1 { transform: rotate(0deg);   background: #111; }
+.t2 { transform: rotate(72deg);  background: #222; }
+.t3 { transform: rotate(144deg); background: #111; }
+.t4 { transform: rotate(216deg); background: #222; }
+.t5 { transform: rotate(288deg); background: #333; }
+
+/* Counter-Rotations for Letters (keeps them upright) */
+.t1 span { transform: rotate(0deg); }
+.t2 span { transform: rotate(-72deg); }
+.t3 span { transform: rotate(-144deg); }
+.t4 span { transform: rotate(-216deg); }
+.t5 span { transform: rotate(-288deg); }
