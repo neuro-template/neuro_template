@@ -5,7 +5,7 @@ body, html {
   height: 100%;
   width: 100%;
   background-color: #000000; /* Background color for body */
-  border: 30px, #FFFFFF;
+  border: 30px solid: #FFFFFF;
 }
 
 /* Div covers entire body */
