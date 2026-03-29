@@ -52,8 +52,8 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Keeps text toward the outer edge */
-  padding-top: 120px;   /* Adjust this to move letters in/out */
-  padding-left: 45px;
+  padding-top: 150px;   /* Adjust this to move letters in/out */
+  padding-left: 90px;
   box-sizing: border-box;
 }
 
