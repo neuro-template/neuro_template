@@ -16,12 +16,12 @@ body, html {
   height: 100vh;
   background-color: #FFFFFF;
   clip-path: polygon(
-    210px 0, 
-    calc(100% - 210px) 0, 
-    100% 210px, 
+    240px 0, 
+    calc(100% - 240px) 0, 
+    100% 240px, 
     100% 100%, 
     0 100%, 
-    0 210px
+    0 240px
   );
   /* This centers the pentagon inside the white area */
   display: flex;
@@ -43,12 +43,12 @@ body, html {
   background-size: 200px 200px; 
   
   clip-path: polygon(
-    240px 0, 
-    calc(100% - 240px) 0, 
-    100% 240px, 
+    210px 0, 
+    calc(100% - 210px) 0, 
+    100% 210px, 
     100% 100%, 
     0 100%, 
-    0 240px
+    0 210px
   );
 
   display: flex;
@@ -58,12 +58,12 @@ body, html {
 
   /* Clip-path to create flat diagonal top corners */
   clip-path: polygon(
-    240px 0,       /* top-left diagonal start */
-    calc(100% - 240px) 0, /* top-right diagonal start */
-    100% 240px,    /* top-right diagonal end */
+    210px 0,       /* top-left diagonal start */
+    calc(100% - 210px) 0, /* top-right diagonal start */
+    100% 210px,    /* top-right diagonal end */
     100% 100%,    /* bottom-right */
     0 100%,       /* bottom-left */
-    0 240px      /* top-left diagonal end */
+    0 210px      /* top-left diagonal end */
   );
 }
 
