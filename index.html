@@ -14,7 +14,29 @@
       box-sizing: border-box;
     }
 
-    /* Main container inset by 10px to create the border */
+    /* Top Left Corner Triangle */
+    .corner-tl {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 196px; /* Sized specifically to leave a 10px diagonal gap */
+      height: 196px;
+      background-color: #000000;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    /* Top Right Corner Triangle */
+    .corner-tr {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 196px; /* Sized specifically to leave a 10px diagonal gap */
+      height: 196px;
+      background-color: #000000;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+
+    /* Main container inset by 10px to create the outer border */
     .diagonal-corners {
       position: absolute;
       top: 10px;
@@ -100,6 +122,9 @@
   </style>
 </head>
 <body>
+
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
 
   <div class="diagonal-corners">
     <div class="pentagon-wrapper">
