@@ -9,8 +9,8 @@
       margin: 0;
       padding: 0;
       height: 100vh;
-      background-color: #FFFFFF; /* The white border color */
-      overflow: hidden; /* Prevent scrollbars */
+      background-color: #FFFFFF;
+      overflow: hidden;
       box-sizing: border-box;
     }
 
@@ -19,24 +19,133 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      width: 196px; /* Sized specifically to leave a 10px diagonal gap */
+      width: 196px;
       height: 196px;
       background-color: #000000;
       clip-path: polygon(0 0, 100% 0, 0 100%);
+      cursor: pointer;
+      z-index: 100;
+      transition: background-color 0.2s;
     }
-
+    
     /* Top Right Corner Triangle */
     .corner-tr {
       position: absolute;
       top: 10px;
       right: 10px;
-      width: 196px; /* Sized specifically to leave a 10px diagonal gap */
+      width: 196px;
       height: 196px;
       background-color: #000000;
       clip-path: polygon(0 0, 100% 0, 100% 100%);
+      cursor: pointer;
+      z-index: 100;
+      transition: background-color 0.2s;
     }
 
-    /* Main container inset by 10px to create the outer border */
+    /* Hover effect for the corner buttons */
+    .corner-tl:hover, .corner-tr:hover {
+      background-color: #222222;
+    }
+
+    /* Git-Style Nested Menu Container */
+    .git-menu {
+      position: absolute;
+      top: 80px;
+      z-index: 90;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid #333;
+      padding: 15px 25px 15px 5px;
+      border-radius: 0 0 5px 5px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .git-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-left { left: 20px; }
+    #menu-right { right: 20px; }
+
+    /* Git Tree CSS Art */
+    .git-tree, .git-tree ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .git-tree ul {
+      padding-left: 20px; /* Indentation for nested branches */
+    }
+    
+    .git-tree li {
+      margin: 0;
+      padding: 10px 0 0 30px;
+      position: relative;
+      color: #CCCCCC;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    
+    .git-tree li:hover {
+      color: #FFFFFF;
+    }
+
+    /* The Vertical Branch Line */
+    .git-tree li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 10px;
+      border-left: 2px solid #555555;
+    }
+
+    /* The Horizontal Branch Line */
+    .git-tree li::after {
+      content: '';
+      position: absolute;
+      top: 20px; 
+      left: 10px;
+      width: 15px;
+      border-top: 2px solid #555555;
+    }
+
+    /* The Commit Node (Circle) */
+    .git-tree li > span::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      background: #000000;
+      border: 2px solid #555555;
+      border-radius: 50%;
+      z-index: 1;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .git-tree li:hover > span::before {
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+
+    /* Stop the vertical line from extending past the last item */
+    .git-tree li:last-child::before {
+      bottom: auto;
+      height: 20px; 
+    }
+
+    /* Main Background Container */
     .diagonal-corners {
       position: absolute;
       top: 10px;
@@ -44,7 +153,6 @@
       right: 10px;
       bottom: 10px;
       
-      /* Dark Polygon/Isometric Tessellation Background */
       background-color: #0a0a0a;
       background-image: 
         linear-gradient(30deg, #111111 12%, transparent 12.5%, transparent 87%, #111111 87.5%, #111111),
@@ -56,32 +164,22 @@
       background-size: 80px 140px;
       background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 
-      /* Clip-path for the flat diagonal top corners */
       clip-path: polygon(
-        210px 0,               /* top-left diagonal start */
-        calc(100% - 210px) 0,  /* top-right diagonal start */
-        100% 210px,            /* top-right diagonal end */
-        100% 100%,             /* bottom-right */
-        0 100%,                /* bottom-left */
-        0 210px                /* top-left diagonal end */
+        210px 0, 
+        calc(100% - 210px) 0, 
+        100% 210px, 
+        100% 100%, 
+        0 100%, 
+        0 210px 
       );
 
-      /* Center the pentagon */
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .pentagon-wrapper {
-      position: relative;
-      z-index: 10;
-    }
-
-    .pentagon-container {
-      width: 750px;  
-      height: 750px;
-      position: relative;
-    }
+    .pentagon-wrapper { position: relative; z-index: 10; }
+    .pentagon-container { width: 750px; height: 750px; position: relative; }
 
     .triangle {
       position: absolute;
@@ -89,8 +187,6 @@
       height: 100%;
       clip-path: polygon(50% 50%, 50% 0%, 97.5% 34.5%);
       transform-origin: 50% 50%;
-      
-      /* Layout for the letter */
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -106,14 +202,12 @@
       color: #FFFFFF;
     }
 
-    /* Rotations for Triangles */
     .t1 { transform: rotate(0deg);   background: #111; }
     .t2 { transform: rotate(72deg);  background: #222; }
     .t3 { transform: rotate(144deg); background: #111; }
     .t4 { transform: rotate(216deg); background: #222; }
     .t5 { transform: rotate(288deg); background: #333; }
 
-    /* Counter-Rotations for Letters (keeps them upright) */
     .t1 span { transform: rotate(0deg); }
     .t2 span { transform: rotate(-72deg); }
     .t3 span { transform: rotate(-144deg); }
@@ -123,8 +217,37 @@
 </head>
 <body>
 
-  <div class="corner-tl"></div>
-  <div class="corner-tr"></div>
+  <div class="corner-tl" onclick="toggleMenu('menu-left')"></div>
+  <div class="corner-tr" onclick="toggleMenu('menu-right')"></div>
+
+  <div id="menu-left" class="git-menu">
+    <ul class="git-tree">
+      <li><span>main</span>
+        <ul>
+          <li><span>systems</span>
+            <ul>
+              <li><span>core_logic</span></li>
+              <li><span>neural_net</span></li>
+            </ul>
+          </li>
+          <li><span>ui_components</span></li>
+        </ul>
+      </li>
+      <li><span>docs</span></li>
+    </ul>
+  </div>
+
+  <div id="menu-right" class="git-menu">
+    <ul class="git-tree">
+      <li><span>settings</span>
+        <ul>
+          <li><span>preferences</span></li>
+          <li><span>network</span></li>
+        </ul>
+      </li>
+      <li><span>logout</span></li>
+    </ul>
+  </div>
 
   <div class="diagonal-corners">
     <div class="pentagon-wrapper">
@@ -138,5 +261,25 @@
     </div>
   </div>
 
+  <script>
+    function toggleMenu(menuId) {
+      const menu = document.getElementById(menuId);
+      
+      // Close all other menus before opening the clicked one (optional, but good UX)
+      document.querySelectorAll('.git-menu').forEach(m => {
+        if (m.id !== menuId) m.classList.remove('active');
+      });
+
+      // Toggle the targeted menu
+      menu.classList.toggle('active');
+    }
+
+    // Close menus if the user clicks anywhere else on the screen
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.git-menu') && !event.target.closest('.corner-tl') && !event.target.closest('.corner-tr')) {
+        document.querySelectorAll('.git-menu').forEach(m => m.classList.remove('active'));
+      }
+    });
+  </script>
 </body>
 </html>
