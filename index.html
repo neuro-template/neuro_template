@@ -3,9 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <title>NEURO</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Make body act as the 10px white border/padding around everything */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #FFFFFF; /* The white border color */
+      overflow: hidden; /* Prevent scrollbars */
+      box-sizing: border-box;
+    }
+
+    /* Main container inset by 10px to create the border */
+    .diagonal-corners {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      
+      /* Dark Polygon/Isometric Tessellation Background */
+      background-color: #0a0a0a;
+      background-image: 
+        linear-gradient(30deg, #111111 12%, transparent 12.5%, transparent 87%, #111111 87.5%, #111111),
+        linear-gradient(150deg, #111111 12%, transparent 12.5%, transparent 87%, #111111 87.5%, #111111),
+        linear-gradient(30deg, #111111 12%, transparent 12.5%, transparent 87%, #111111 87.5%, #111111),
+        linear-gradient(150deg, #111111 12%, transparent 12.5%, transparent 87%, #111111 87.5%, #111111),
+        linear-gradient(60deg, #1a1a1a 25%, transparent 25.5%, transparent 75%, #1a1a1a 75%, #1a1a1a),
+        linear-gradient(60deg, #1a1a1a 25%, transparent 25.5%, transparent 75%, #1a1a1a 75%, #1a1a1a);
+      background-size: 80px 140px;
+      background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+
+      /* Clip-path for the flat diagonal top corners */
+      clip-path: polygon(
+        210px 0,               /* top-left diagonal start */
+        calc(100% - 210px) 0,  /* top-right diagonal start */
+        100% 210px,            /* top-right diagonal end */
+        100% 100%,             /* bottom-right */
+        0 100%,                /* bottom-left */
+        0 210px                /* top-left diagonal end */
+      );
+
+      /* Center the pentagon */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pentagon-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+
+    .pentagon-container {
+      width: 750px;  
+      height: 750px;
+      position: relative;
+    }
+
+    .triangle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(50% 50%, 50% 0%, 97.5% 34.5%);
+      transform-origin: 50% 50%;
+      
+      /* Layout for the letter */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 180px;   
+      padding-left: 210px;
+      box-sizing: border-box;
+    }
+
+    .triangle span {
+      font-family: 'Courier New', monospace; 
+      font-size: 6rem;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+
+    /* Rotations for Triangles */
+    .t1 { transform: rotate(0deg);   background: #111; }
+    .t2 { transform: rotate(72deg);  background: #222; }
+    .t3 { transform: rotate(144deg); background: #111; }
+    .t4 { transform: rotate(216deg); background: #222; }
+    .t5 { transform: rotate(288deg); background: #333; }
+
+    /* Counter-Rotations for Letters (keeps them upright) */
+    .t1 span { transform: rotate(0deg); }
+    .t2 span { transform: rotate(-72deg); }
+    .t3 span { transform: rotate(-144deg); }
+    .t4 span { transform: rotate(-216deg); }
+    .t5 span { transform: rotate(-288deg); }
+  </style>
 </head>
 <body>
+
   <div class="diagonal-corners">
     <div class="pentagon-wrapper">
       <div class="pentagon-container">
@@ -14,8 +109,9 @@
         <div class="triangle t3"><span>U</span></div>
         <div class="triangle t4"><span>R</span></div>
         <div class="triangle t5"><span>O</span></div>
-</div>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
