@@ -42,37 +42,57 @@
       transition: background-color 0.2s;
     }
 
-    /* Hover effect for the corner buttons */
     .corner-tl:hover, .corner-tr:hover {
       background-color: #222222;
     }
 
-    /* Git-Style Nested Menu Container */
+    /* Git-Style Nested Menu Container - NOW ALMOST FULL SCREEN */
     .git-menu {
-      position: absolute;
-      top: 80px;
-      z-index: 90;
-      background: rgba(0, 0, 0, 0.9);
-      border: 1px solid #333;
-      padding: 15px 25px 15px 5px;
-      border-radius: 0 0 5px 5px;
+      position: fixed;
+      top: 50px;
+      left: 50px;
+      right: 50px;
+      bottom: 50px;
+      z-index: 110; /* Bring above everything else */
+      background: rgba(10, 10, 10, 0.95);
+      border: 2px solid #333;
+      padding: 60px;
+      border-radius: 8px;
+      box-shadow: 0 0 50px rgba(0,0,0,0.8);
+      
+      /* Animation properties */
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
+      transform: scale(0.98) translateY(10px);
       transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(10px);
+      overflow-y: auto; /* Allow scrolling if the menu gets too tall */
     }
 
     .git-menu.active {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      transform: scale(1) translateY(0);
     }
 
-    #menu-left { left: 20px; }
-    #menu-right { right: 20px; }
+    /* Close Button inside the big menu */
+    .close-menu {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #777777;
+      font-family: 'Courier New', monospace;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    
+    .close-menu:hover {
+      color: #FFFFFF;
+    }
 
-    /* Git Tree CSS Art */
+    /* Git Tree CSS Art - SCALED UP FOR LARGE SCREEN */
     .git-tree, .git-tree ul {
       list-style-type: none;
       margin: 0;
@@ -80,16 +100,16 @@
     }
     
     .git-tree ul {
-      padding-left: 20px; /* Indentation for nested branches */
+      padding-left: 50px; /* Wider indentation */
     }
     
     .git-tree li {
       margin: 0;
-      padding: 10px 0 0 30px;
+      padding: 20px 0 0 60px; /* Spaced out more */
       position: relative;
       color: #CCCCCC;
       font-family: 'Courier New', monospace;
-      font-size: 14px;
+      font-size: 28px; /* Larger font */
       font-weight: bold;
       cursor: pointer;
       transition: color 0.2s;
@@ -105,44 +125,45 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 10px;
-      border-left: 2px solid #555555;
+      left: 20px;
+      border-left: 3px solid #555555; /* Thicker line */
     }
 
     /* The Horizontal Branch Line */
     .git-tree li::after {
       content: '';
       position: absolute;
-      top: 20px; 
-      left: 10px;
-      width: 15px;
-      border-top: 2px solid #555555;
+      top: 38px; 
+      left: 20px;
+      width: 30px;
+      border-top: 3px solid #555555; /* Thicker line */
     }
 
     /* The Commit Node (Circle) */
     .git-tree li > span::before {
       content: '';
       position: absolute;
-      top: 15px;
-      left: 5px;
-      width: 10px;
-      height: 10px;
+      top: 28px;
+      left: 9px;
+      width: 18px; /* Larger node */
+      height: 18px;
       background: #000000;
-      border: 2px solid #555555;
+      border: 3px solid #555555;
       border-radius: 50%;
       z-index: 1;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
 
     .git-tree li:hover > span::before {
       background: #FFFFFF;
       border-color: #FFFFFF;
+      transform: scale(1.2); /* Slight pop effect on hover */
     }
 
     /* Stop the vertical line from extending past the last item */
     .git-tree li:last-child::before {
       bottom: auto;
-      height: 20px; 
+      height: 38px; 
     }
 
     /* Main Background Container */
@@ -221,6 +242,7 @@
   <div class="corner-tr" onclick="toggleMenu('menu-right')"></div>
 
   <div id="menu-left" class="git-menu">
+    <div class="close-menu" onclick="closeAllMenus()">[X] CLOSE</div>
     <ul class="git-tree">
       <li><span>main</span>
         <ul>
@@ -238,6 +260,7 @@
   </div>
 
   <div id="menu-right" class="git-menu">
+    <div class="close-menu" onclick="closeAllMenus()">[X] CLOSE</div>
     <ul class="git-tree">
       <li><span>settings</span>
         <ul>
@@ -265,19 +288,25 @@
     function toggleMenu(menuId) {
       const menu = document.getElementById(menuId);
       
-      // Close all other menus before opening the clicked one (optional, but good UX)
-      document.querySelectorAll('.git-menu').forEach(m => {
-        if (m.id !== menuId) m.classList.remove('active');
-      });
+      // If clicking the same menu that is already open, just close it
+      if (menu.classList.contains('active')) {
+        closeAllMenus();
+        return;
+      }
 
-      // Toggle the targeted menu
-      menu.classList.toggle('active');
+      // Otherwise, close others and open the requested one
+      closeAllMenus();
+      menu.classList.add('active');
     }
 
-    // Close menus if the user clicks anywhere else on the screen
+    function closeAllMenus() {
+      document.querySelectorAll('.git-menu').forEach(m => m.classList.remove('active'));
+    }
+
+    // Close menus if the user clicks the background (outside the menu box and triangles)
     document.addEventListener('click', function(event) {
       if (!event.target.closest('.git-menu') && !event.target.closest('.corner-tl') && !event.target.closest('.corner-tr')) {
-        document.querySelectorAll('.git-menu').forEach(m => m.classList.remove('active'));
+        closeAllMenus();
       }
     });
   </script>
